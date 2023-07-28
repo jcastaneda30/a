@@ -17,8 +17,10 @@ client.on("qr", qr => {
     qrcode.generate(qr, {small: true} );
 })
 
-client.on('message', message => {
-	console.log(message.body);
+client.on('message', async message => {
+	const a= await message.getChat();
+    console.log(a.isGroup);
+    console.log(message.body);
 });
 client.on('message', message => {
 	if(message.body === '!ping') {
